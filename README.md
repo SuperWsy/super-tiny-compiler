@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-05 17:09:08
- * @LastEditTime: 2023-01-05 17:20:33
+ * @LastEditTime: 2023-01-05 17:30:59
  * @LastEditors: wsy
 -->
 # super-tiny-compiler
@@ -10,7 +10,7 @@
 **_Welcome to Super Tiny Compiler!_**
 
 基于 [the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler) 实现
-
+![gh_visitors](./public/banner.webp)
 ## 前端为什么要了解编译原理
 
 当你做到高级前端的时候是经常需要和插件打交道的
