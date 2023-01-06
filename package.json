@@ -4,14 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/index.ts "
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@vitest/coverage-c8": "^0.26.3",
     "tsx": "^3.12.1",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vitest": "^0.26.3"
   }
 }
