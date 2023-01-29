@@ -3,12 +3,12 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-06 14:57:54
- * @LastEditTime: 2023-01-28 16:18:50
+ * @LastEditTime: 2023-01-28 17:13:13
  * @LastEditors: wsy
  */
 import TokenTypes from "./tokenTypes"
 
-interface TokenItem {
+export interface TokenItem {
   type: string,
   value: string
 }
