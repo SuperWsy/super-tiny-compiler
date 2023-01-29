@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-28 17:12:27
- * @LastEditTime: 2023-01-29 16:11:07
+ * @LastEditTime: 2023-01-29 16:45:21
  * @LastEditors: wsy
  */
 
@@ -11,26 +11,26 @@ import TokenTypes from './tokenTypes';
 
 
 
-enum NodeTypes {
+export enum NodeTypes {
   Program = "Program",
   NumberLiteral = 'NumberLiteral',
   CallExpression = "CallExpression"
 }
 
-interface Node {
-  type: NodeTypes;
-}
-type ChildNode = CallExpressionNode | NumberLiteralNode
+export type ChildNode = CallExpressionNode | NumberLiteralNode
 
-interface RootNode extends Node {
+export interface RootNode {
+  type: NodeTypes.Program;
   body: ChildNode[]
 }
 
-interface NumberLiteralNode extends Node {
+export interface NumberLiteralNode {
+  type: NodeTypes.NumberLiteral;
   value: string;
 }
 
-interface CallExpressionNode extends Node {
+export interface CallExpressionNode {
+  type: NodeTypes.CallExpression;
   name: string;
   params: ChildNode[]
 }

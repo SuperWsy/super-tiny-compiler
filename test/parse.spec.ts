@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-28 17:10:15
- * @LastEditTime: 2023-01-29 16:05:36
+ * @LastEditTime: 2023-01-29 16:29:14
  * @LastEditors: wsy
  */
 import { tokenizer } from '../src/tokenizer';
@@ -53,7 +53,7 @@ describe('parser', () => {
     expect(parser(tokens)).toStrictEqual(ast)
   });
   it('parser', () => {
-    const tree = {
+    const ast = {
       type: 'Program',
       body: [
         {
@@ -83,6 +83,6 @@ describe('parser', () => {
     }
     const code = `(add 2 (subtract 4 2))`
     const tokens = tokenizer(code)
-    expect(parser(tokens)).toStrictEqual(tree)
+    expect(parser(tokens)).toStrictEqual(ast)
   });
 })
