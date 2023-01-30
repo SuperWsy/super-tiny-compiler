@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-29 16:26:31
- * @LastEditTime: 2023-01-29 17:29:03
+ * @LastEditTime: 2023-01-30 16:17:06
  * @LastEditors: wsy
  */
 import { traverse } from '../src/traverse';
@@ -48,7 +48,6 @@ describe('traverse', () => {
           classArr.push('Program-exit')
         },
       },
-
       CallExpression: {
         enter(node, parent) {
           classArr.push('CallExpression-enter')
@@ -67,7 +66,6 @@ describe('traverse', () => {
         },
       },
     })
-    console.log(classArr);
     expect(classArr).toStrictEqual([
       'Program-enter',
       'CallExpression-enter',

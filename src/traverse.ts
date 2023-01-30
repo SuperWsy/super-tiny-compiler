@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-29 16:26:13
- * @LastEditTime: 2023-01-29 17:24:52
+ * @LastEditTime: 2023-01-30 18:11:00
  * @LastEditors: wsy
  */
 import { RootNode, ChildNode, NodeTypes } from './parser';
@@ -10,13 +10,13 @@ import { RootNode, ChildNode, NodeTypes } from './parser';
 
 
 interface VisitorValue {
-  enter(node: RootNode | ChildNode, parent: RootNode | ChildNode | null): void;
-  exit(node: RootNode | ChildNode, parent: RootNode | ChildNode | null): void;
+  enter(node: RootNode | ChildNode, parent?: RootNode | ChildNode): void;
+  exit(node: RootNode | ChildNode, parent?: RootNode | ChildNode): void;
 }
 type VisitorKey = keyof typeof NodeTypes
 
 type Visitor = {
-  [key in VisitorKey]: VisitorValue
+  [key in VisitorKey]?: VisitorValue
 }
 
 export function traverse(ast: RootNode, visitor: Visitor) {
@@ -24,9 +24,9 @@ export function traverse(ast: RootNode, visitor: Visitor) {
     array.forEach((child) => {
       traverseNode(child, parent);
     });
-  }
+  }  
 
-  function traverseNode<T>(node: RootNode | ChildNode, parent: RootNode | ChildNode | null) {
+  function traverseNode(node: RootNode | ChildNode, parent?: RootNode | ChildNode) {
     const methods = visitor[node.type];
 
     if (methods && methods.enter) {
@@ -43,12 +43,12 @@ export function traverse(ast: RootNode, visitor: Visitor) {
       case NodeTypes.NumberLiteral:
         break;
       default:
-        throw new TypeError((node as ChildNode)?.type ?? "Error");
+        break;
     }
 
     if (methods && methods.exit) {
       methods.exit(node, parent);
     }
   }
-  traverseNode<RootNode>(ast, null);
+  traverseNode(ast);
 }
