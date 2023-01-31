@@ -2,12 +2,11 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-29 16:26:31
- * @LastEditTime: 2023-01-30 16:17:06
+ * @LastEditTime: 2023-01-31 19:32:07
  * @LastEditors: wsy
  */
-import { traverse } from '../src/traverse';
 import { RootNode } from '../src/parser';
-
+import { traverse } from '../src/traverse';
 describe('traverse', () => {
   it('traverse', () => {
     const ast = {

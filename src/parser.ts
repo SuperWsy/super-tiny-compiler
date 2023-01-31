@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-28 17:12:27
- * @LastEditTime: 2023-01-29 16:45:21
+ * @LastEditTime: 2023-01-31 19:38:18
  * @LastEditors: wsy
  */
 
@@ -14,14 +14,18 @@ import TokenTypes from './tokenTypes';
 export enum NodeTypes {
   Program = "Program",
   NumberLiteral = 'NumberLiteral',
-  CallExpression = "CallExpression"
+  CallExpression = "CallExpression",
+  Identifier = "Identifier",
+  ExpressionStatement = "ExpressionStatement"
 }
 
 export type ChildNode = CallExpressionNode | NumberLiteralNode
+export type ParentNode = RootNode | CallExpressionNode
 
 export interface RootNode {
   type: NodeTypes.Program;
-  body: ChildNode[]
+  body: ChildNode[];
+  _context?: ChildNode[];
 }
 
 export interface NumberLiteralNode {
@@ -32,7 +36,8 @@ export interface NumberLiteralNode {
 export interface CallExpressionNode {
   type: NodeTypes.CallExpression;
   name: string;
-  params: ChildNode[]
+  params: ChildNode[],
+  _context?: ChildNode[];
 }
 
 function createRootNode(): RootNode {

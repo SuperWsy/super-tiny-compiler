@@ -2,16 +2,17 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-29 16:26:13
- * @LastEditTime: 2023-01-30 18:11:00
+ * @LastEditTime: 2023-01-31 19:33:52
  * @LastEditors: wsy
  */
-import { RootNode, ChildNode, NodeTypes } from './parser';
 
+import { RootNode, ChildNode, NodeTypes, ParentNode } from './parser';
 
+type MethodFn = (node: RootNode | ChildNode, parent?: ParentNode) => void;
 
 interface VisitorValue {
-  enter(node: RootNode | ChildNode, parent?: RootNode | ChildNode): void;
-  exit(node: RootNode | ChildNode, parent?: RootNode | ChildNode): void;
+  enter?: MethodFn;
+  exit?: MethodFn;
 }
 type VisitorKey = keyof typeof NodeTypes
 
@@ -20,13 +21,13 @@ type Visitor = {
 }
 
 export function traverse(ast: RootNode, visitor: Visitor) {
-  function traverseArray(array: ChildNode[], parent: RootNode | ChildNode) {
+  function traverseArray(array: ChildNode[], parent: ParentNode) {
     array.forEach((child) => {
       traverseNode(child, parent);
     });
-  }  
+  }
 
-  function traverseNode(node: RootNode | ChildNode, parent?: RootNode | ChildNode) {
+  function traverseNode(node: RootNode | ChildNode, parent?: ParentNode) {
     const methods = visitor[node.type];
 
     if (methods && methods.enter) {
