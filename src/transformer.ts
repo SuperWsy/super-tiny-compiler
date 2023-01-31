@@ -2,12 +2,11 @@
  * @Description: 
  * @Author: wsy
  * @Date: 2023-01-31 14:56:40
- * @LastEditTime: 2023-01-31 19:53:47
+ * @LastEditTime: 2023-01-31 20:01:51
  * @LastEditors: wsy
  */
-import { RootNode, ChildNode, NodeTypes } from './parser';
+import { RootNode, NodeTypes } from './parser';
 import { traverse } from './traverse';
-import { CallExpressionNode } from './parser';
 
 
 export function transformer(ast: RootNode) {
@@ -19,7 +18,7 @@ export function transformer(ast: RootNode) {
 
   traverse(ast, {
     CallExpression: {
-      enter(node, parent) { 
+      enter(node, parent) {
         if (node.type === NodeTypes.CallExpression) {
           let expression: any = {
             type: NodeTypes.CallExpression,
